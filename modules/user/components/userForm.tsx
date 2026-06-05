@@ -9,8 +9,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React from "react";
+import { TUser } from "../definitions/user.definitions";
 
-export default function UserForm() {
+export default function UserForm({ user }: { user: TUser }) {
   return (
     <div className="w-full max-w-2xl mx-auto p-4">
       <Card>
@@ -24,7 +25,12 @@ export default function UserForm() {
           <form className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="fullName">Full Name</Label>
-              <Input id="fullName" type="text" placeholder="John Doe" />
+              <Input
+                id="fullName"
+                type="text"
+                placeholder="John Doe"
+                defaultValue={user?.full_name}
+              />
             </div>
 
             <div className="space-y-2">
@@ -33,7 +39,7 @@ export default function UserForm() {
                 id="email"
                 type="email"
                 placeholder="example@domain.com"
-                required
+                defaultValue={user?.email}
               />
             </div>
 
@@ -43,6 +49,7 @@ export default function UserForm() {
                 id="contactNumber"
                 type="tel"
                 placeholder="+977-9XXXXXXXX"
+                defaultValue={user?.contact_number}
               />
             </div>
 
@@ -52,7 +59,7 @@ export default function UserForm() {
                 id="address1"
                 type="text"
                 placeholder="Street address, P.O. box"
-                required
+                defaultValue={user?.temporary_address}
               />
             </div>
 
@@ -62,18 +69,29 @@ export default function UserForm() {
                 id="address2"
                 type="text"
                 placeholder="Apartment, suite, unit, building, floor"
+                defaultValue={user?.permanent_address}
               />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="city">City</Label>
-                <Input id="city" type="text" placeholder="Kathmandu" required />
+                <Input
+                  id="city"
+                  type="text"
+                  placeholder="Kathmandu"
+                  defaultValue={user?.city}
+                />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="state">State / Province (Optional)</Label>
-                <Input id="state" type="text" placeholder="Bagmati" />
+                <Input
+                  id="state"
+                  type="text"
+                  placeholder="Bagmati"
+                  defaultValue={user?.state}
+                />
               </div>
             </div>
 

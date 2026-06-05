@@ -6,8 +6,10 @@ export const dummyUserProfile = {
   contact_number: "+977-9876543210",
   temporary_address: "Kathmandu, Nepal",
   permanent_address: "Pokhara, Nepal",
+  city: "Kathmandu",
+  state: "Bagmati",
 };
 export default async function User() {
   //   const user = await getUser();
-  return <UserForm />;
+  return <UserForm user={dummyUserProfile} />;
 }
