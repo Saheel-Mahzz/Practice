@@ -36,7 +36,7 @@ export default function UserForm({ user }: { user: TUser }) {
                 name="full_name"
                 type="text"
                 placeholder="John Doe"
-                defaultValue={user?.full_name}
+                defaultValue={state?.data?.full_name ?? user?.full_name ?? ""}
               />
               {state?.errors?.full_name && (
                 <span className="text-red-700">{state?.errors?.full_name}</span>
@@ -50,7 +50,7 @@ export default function UserForm({ user }: { user: TUser }) {
                 name="email"
                 type="email"
                 placeholder="example@domain.com"
-                defaultValue={user?.email}
+                defaultValue={state?.data?.email ?? user?.email ?? ""}
               />
               {state?.errors?.email && (
                 <span className="text-red-700">{state?.errors?.email}</span>

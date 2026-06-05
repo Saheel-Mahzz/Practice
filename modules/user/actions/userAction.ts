@@ -3,7 +3,7 @@ import { userSchema } from "../definitions/user.definitions"
 export async function userAction (prevState,formData:FormData){
 
     const rawData={
-        full_name:formData.get('full_name'),
+        full_name:formData.get('full_name') as string,
         email:formData.get('email'),
         contact_number:formData.get('contact_number'),
         temporary_address:formData.get('temporary_address'),
@@ -26,7 +26,8 @@ return acc
    return {
     message:'Validation failed',
     success:false,
-    errors:fieldErrors
+    errors:fieldErrors,
+    data:rawData
    }
     }
     // console.log('rawdata',rawData)
