@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,10 +10,12 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React from "react";
+import React, { useActionState } from "react";
 import { TUser } from "../definitions/user.definitions";
+import { userAction } from "../actions/userAction";
 
 export default function UserForm({ user }: { user: TUser }) {
+  const [state, formAction, isPending] = useActionState(userAction, {});
   return (
     <div className="w-full max-w-2xl mx-auto p-4">
       <Card>
@@ -22,11 +26,12 @@ export default function UserForm({ user }: { user: TUser }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form className="space-y-6">
+          <form className="space-y-6" action={formAction}>
             <div className="space-y-2">
               <Label htmlFor="fullName">Full Name</Label>
               <Input
-                id="fullName"
+                id="full_name"
+                name="full_name"
                 type="text"
                 placeholder="John Doe"
                 defaultValue={user?.full_name}
@@ -37,6 +42,7 @@ export default function UserForm({ user }: { user: TUser }) {
               <Label htmlFor="email">Email Address</Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="example@domain.com"
                 defaultValue={user?.email}
@@ -48,6 +54,7 @@ export default function UserForm({ user }: { user: TUser }) {
               <Input
                 id="contactNumber"
                 type="tel"
+                name="contact_number"
                 placeholder="+977-9XXXXXXXX"
                 defaultValue={user?.contact_number}
               />
@@ -57,6 +64,7 @@ export default function UserForm({ user }: { user: TUser }) {
               <Label htmlFor="address1">Address Line 1</Label>
               <Input
                 id="address1"
+                name="temporary_address"
                 type="text"
                 placeholder="Street address, P.O. box"
                 defaultValue={user?.temporary_address}
@@ -68,6 +76,7 @@ export default function UserForm({ user }: { user: TUser }) {
               <Input
                 id="address2"
                 type="text"
+                name="permanent_address"
                 placeholder="Apartment, suite, unit, building, floor"
                 defaultValue={user?.permanent_address}
               />
@@ -78,6 +87,7 @@ export default function UserForm({ user }: { user: TUser }) {
                 <Label htmlFor="city">City</Label>
                 <Input
                   id="city"
+                  name="city"
                   type="text"
                   placeholder="Kathmandu"
                   defaultValue={user?.city}
@@ -88,6 +98,7 @@ export default function UserForm({ user }: { user: TUser }) {
                 <Label htmlFor="state">State / Province (Optional)</Label>
                 <Input
                   id="state"
+                  name="state"
                   type="text"
                   placeholder="Bagmati"
                   defaultValue={user?.state}
