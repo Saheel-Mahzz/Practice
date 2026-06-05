@@ -16,6 +16,8 @@ import { userAction } from "../actions/userAction";
 
 export default function UserForm({ user }: { user: TUser }) {
   const [state, formAction, isPending] = useActionState(userAction, {});
+
+  console.log("state", state);
   return (
     <div className="w-full max-w-2xl mx-auto p-4">
       <Card>
@@ -36,6 +38,9 @@ export default function UserForm({ user }: { user: TUser }) {
                 placeholder="John Doe"
                 defaultValue={user?.full_name}
               />
+              {state?.errors?.full_name && (
+                <span className="text-red-700">{state?.errors?.full_name}</span>
+              )}
             </div>
 
             <div className="space-y-2">
@@ -47,6 +52,9 @@ export default function UserForm({ user }: { user: TUser }) {
                 placeholder="example@domain.com"
                 defaultValue={user?.email}
               />
+              {state?.errors?.email && (
+                <span className="text-red-700">{state?.errors?.email}</span>
+              )}
             </div>
 
             <div className="space-y-2">
@@ -110,7 +118,9 @@ export default function UserForm({ user }: { user: TUser }) {
               <Button type="button" variant="outline">
                 Cancel
               </Button>
-              <Button type="submit">Save Changes</Button>
+              <Button type="submit">
+                {isPending ? "Saving.." : "Save Changes"}
+              </Button>
             </div>
           </form>
         </CardContent>

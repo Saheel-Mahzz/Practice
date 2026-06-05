@@ -1,3 +1,5 @@
+import { userSchema } from "../definitions/user.definitions"
+
 export async function userAction (prevState,formData:FormData){
 
     const rawData={
@@ -9,6 +11,27 @@ export async function userAction (prevState,formData:FormData){
         state:formData.get('state'),
         city:formData.get('city')
     }
-    console.log('rawdata',rawData)
-    return {}
+
+    const result = userSchema.safeParse(rawData)
+
+    console.log('rsult',result)
+
+    if(!result?.success){
+   const fieldErrors = result?.error?.issues.reduce((acc,issue)=>{
+const fieldName = issue.path[0]
+acc[fieldName] = issue?.message
+return acc
+   },{})
+
+   return {
+    message:'Validation failed',
+    success:false,
+    errors:fieldErrors
+   }
+    }
+    // console.log('rawdata',rawData)
+    return {
+        message:'User Updated Succesfully!',
+        error:null
+    }
 }
