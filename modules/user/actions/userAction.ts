@@ -24,6 +24,8 @@ const fieldName = issue.path[0]
 acc[fieldName] = issue?.message
 return acc
    },{})
+// const fieldErrors = result.error.flatten().fieldErrors;
+// Output direct aauchha: { email: ["Invalid email"], full_name: ["Required"] }
 
    return {
     message:'Validation failed',

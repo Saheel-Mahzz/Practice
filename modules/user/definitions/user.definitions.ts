@@ -38,5 +38,5 @@ export type TUser = z.infer<typeof userSchema>
 
 export interface UserResponse {
     status:string
-
+data:TUser
 }
