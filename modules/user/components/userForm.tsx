@@ -10,14 +10,46 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React, { useActionState } from "react";
+import React, { useActionState, useEffect } from "react";
 import { TUser } from "../definitions/user.definitions";
 import { userAction } from "../actions/userAction";
 import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 export default function UserForm({ user }: { user: TUser }) {
   const [state, formAction, isPending] = useActionState(userAction, {});
 
+  // useEffect(() => {
+  //   if (!state?.message) return;
+  //   const toastFn = state?.success ? toast.success : toast.error;
+
+  //   toastFn(state?.message);
+  // }, [state]);
+
+  // useEffect(() => {
+  //   if (!state?.message) return;
+
+  //   if (!state.success && state.errors) {
+  //     const errorMessages = Object.values(state.errors).join("\n");
+  //     toast.error(errorMessages);
+  //     return;
+  //   }
+
+  //   const toastFn = state.success ? toast.success : toast.error;
+  //   toastFn(state.message);
+  // }, [state]);
+
+  useEffect(() => {
+    if (!state?.message) return;
+
+    if (!state.success && state.errors) {
+      Object.values(state.errors).forEach((msg) => toast.error(msg));
+      return;
+    }
+
+    const toastFn = state.success ? toast.success : toast.error;
+    toastFn(state.message);
+  }, [state]);
   console.log("state", state);
   return (
     <div className="w-full max-w-2xl mx-auto p-4">
