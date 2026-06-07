@@ -165,5 +165,17 @@ export default async function User() {
   const greaterThanTwenty = randomNumbers?.map((number) => number > 20);
   console.log("greater than twenty", greaterThanTwenty);
 
+  const products = [
+    { id: 1, name: "Smartphone", category: "Electronics", price: 800 },
+    { id: 2, name: "Trimmer", category: "Electronics", price: 40 },
+    { id: 3, name: "Keyboard", category: "Electronics", price: 120 },
+    { id: 4, name: "Running Shoes", category: "Clothing", price: 90 },
+    { id: 5, name: "Smart Watch", category: "Electronics", price: 250 },
+  ];
+
+  const filteredProducts = products?.filter(
+    (product) => product?.category === "Electronics" && product?.price < 500,
+  );
+  console.log("filtered prducts", filteredProducts);
   return <UserForm user={user?.data} />;
 }
