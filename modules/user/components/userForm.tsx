@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import React, { useActionState } from "react";
 import { TUser } from "../definitions/user.definitions";
 import { userAction } from "../actions/userAction";
+import { Loader2 } from "lucide-react";
 
 export default function UserForm({ user }: { user: TUser }) {
   const [state, formAction, isPending] = useActionState(userAction, {});
@@ -28,7 +29,7 @@ export default function UserForm({ user }: { user: TUser }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form className="space-y-6" action={formAction}>
+          <form className="space-y-6" action={formAction} noValidate>
             <div className="space-y-2">
               <Label htmlFor="fullName">Full Name</Label>
               <Input
@@ -46,7 +47,6 @@ export default function UserForm({ user }: { user: TUser }) {
             <div className="space-y-2">
               <Label htmlFor="email">Email Address</Label>
               <Input
-                id="email"
                 name="email"
                 type="email"
                 placeholder="example@domain.com"
@@ -118,8 +118,15 @@ export default function UserForm({ user }: { user: TUser }) {
               <Button type="button" variant="outline">
                 Cancel
               </Button>
-              <Button type="submit">
-                {isPending ? "Saving.." : "Save Changes"}
+              <Button type="submit" disabled={isPending}>
+                {isPending ? (
+                  <>
+                    {" "}
+                    <Loader2 /> Saving..{" "}
+                  </>
+                ) : (
+                  "Save Changes"
+                )}
               </Button>
             </div>
           </form>

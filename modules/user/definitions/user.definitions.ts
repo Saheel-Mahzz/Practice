@@ -1,9 +1,21 @@
 import z from "zod";
 
 export const userSchema = z.object({
-    full_name:z.string().min(1,'Fullname cannot be left empty!'),
-    email:z.string().min(1,'This field cannot be left empty'),
-    contact_number:z.string().optional(),
+    // full_name:z.string().min(1,'Fullname cannot be left empty!'),
+    full_name:z.string().optional(),
+    // full_name:z.string().min(1,'This field cannot be left empty!').regex(/^[A-Za-z]+$/, "Full name alphanumeric ya special characters huna paudaena"),
+    // email:z.string().min(1,'This field cannot be left empty'),
+    // email:z.string().min(1,'This field cannot be left empty').email('Invalid email format!'),
+//     // email: z.email({ message: "Invalid email format!" }),
+//     email: z
+//   .string()
+//   .min(1, "This field cannot be left empty") // Khali huda yo chalxa
+//   .pipe(z.string().email("Invalid email format!")),
+email: z
+  .string()
+  .min(1, "This field cannot be left empty")
+  .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format!"),
+  contact_number:z.string().optional(),
     temporary_address:z.string().optional(),
     permanent_address:z.string().optional(),
     state:z.string().optional(),

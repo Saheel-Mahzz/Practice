@@ -1,3 +1,4 @@
+import { getUser } from "./api/getUser";
 import UserForm from "./components/userForm";
 
 export const dummyUserProfile = {
@@ -10,6 +11,7 @@ export const dummyUserProfile = {
   state: "Bagmati",
 };
 export default async function User() {
-  //   const user = await getUser();
-  return <UserForm user={dummyUserProfile} />;
+  const user = await getUser();
+
+  return <UserForm user={user?.data} />;
 }
