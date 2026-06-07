@@ -138,5 +138,32 @@ export default async function User() {
 
   console.log("calculated number", calculatedNumber);
 
+  const rawUsers = [
+    { first_name: "sahil", last_name: "maharjan", is_active: 1 },
+    { first_name: "rohan", last_name: "shrestha", is_active: 0 },
+    { first_name: "sita", last_name: "thapa", is_active: 1 },
+  ];
+
+  const mappedUsers = rawUsers?.map((user) => {
+    const capitalize = (str: string) =>
+      str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
+    return {
+      // fullName:
+      //   user?.first_name.charAt(0).toUpperCase() +
+      //   user?.first_name?.slice(1) +
+      //   " " +
+      //   user?.last_name?.charAt(0).toUpperCase() +
+      //   user?.last_name?.slice(1),
+      fullName: `${capitalize(user?.first_name)} ${capitalize(user?.last_name)}`,
+
+      status: user?.is_active ? "Active" : "Inactive",
+    };
+  });
+
+  const randomNumbers = [10, 20, 30];
+
+  const greaterThanTwenty = randomNumbers?.map((number) => number > 20);
+  console.log("greater than twenty", greaterThanTwenty);
+
   return <UserForm user={user?.data} />;
 }
