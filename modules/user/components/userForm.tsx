@@ -60,12 +60,17 @@ export default function UserForm({ user }: { user: TUser }) {
             <div className="space-y-2">
               <Label htmlFor="contactNumber">Contact Number</Label>
               <Input
-                id="contactNumber"
+                id="contact_number"
                 type="tel"
                 name="contact_number"
                 placeholder="+977-9XXXXXXXX"
                 defaultValue={user?.contact_number}
               />
+              {state?.errors?.contact_number && (
+                <span className="text-red-700">
+                  {state?.errors?.contact_number}
+                </span>
+              )}
             </div>
 
             <div className="space-y-2">
