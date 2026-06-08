@@ -98,6 +98,32 @@ export default async function User() {
     {} as Record<string, keyof TUserItem>,
   );
 
+  const numberss = [1, 2, 3, 3, 4, 4, 5, 6, 7];
+
+  const uniqueNumbers = [...new Set(numberss)];
+
+  console.log("unique numbers", uniqueNumbers);
+
+  const skills = ["React", "Next.js", "React", "TypeScript", "Next.js"];
+  const uniqueSkills = [...new Set(skills)];
+  console.log("unique skills", uniqueSkills);
+
+  // const listA = [1, 2, 3, 4];
+  // const listB = [3, 4, 5, 6];
+
+  // const setB = new Set(listB);
+
+  // const uniqueSets = listA.filter((item) => setB.has(item));
+  // console.log("unique sets", uniqueSets);
+
+  const listA = ["react", "nextjs", "typescript"];
+  const listB = ["react", "vue", "angular"];
+
+  const setB = new Set(listB);
+
+  const onlyA = listA.filter((item) => !setB.has(item));
+
+  console.log("only A", onlyA);
   const logs = [
     { item: "Laptop", type: "IN", qty: 10 },
     { item: "Mouse", type: "IN", qty: 50 },
@@ -106,6 +132,73 @@ export default async function User() {
     { item: "Laptop", type: "IN", qty: 5 },
   ];
 
+  const usersObject = [
+    { id: "usr_1", name: "Saheel" },
+    { id: "usr_2", name: "Dai" },
+    { id: "usr_1", name: "Sahil Maharjan" }, // Duplicate ID!
+  ];
+
+  const seenIds = new Set();
+
+  const uniqueUsersObject = usersObject.filter((user) => {
+    if (seenIds.has(user?.id)) {
+      return false;
+    }
+    seenIds.add(user?.id);
+    return true;
+  });
+
+  console.log("unique users object", uniqueUsersObject);
+
+  const notifications = [
+    { notifyId: 101, text: "New Comment" },
+    { notifyId: 102, text: "Like on post" },
+    { notifyId: 101, text: "New Comment Duplicate" },
+  ];
+
+  const seenNotify = new Set();
+
+  const uniqueNotifications = notifications?.filter((notification) => {
+    if (seenNotify.has(notification?.notifyId)) {
+      return false;
+    }
+    seenNotify.add(notification?.notifyId);
+    return true;
+  });
+  console.log("unique notifications", uniqueNotifications);
+
+  // const str = "A man, a plan, a canal: Panama";
+
+  // let left = 0;
+  // let right = str.length - 1;
+  // console.log("right", str[2]);
+
+  // while (left < right) {
+  //   if (str[left] !== str[right]) return false;
+  //   left++;
+  //   right--;
+  // }
+
+  const str = "A man, a plan, a canal: Panamttta";
+
+  function check() {
+    // Paila character space validation filter small lower standard bypass garne!
+    const cleanStr = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+    let left = 0;
+    let right = cleanStr.length - 1;
+
+    while (left < right) {
+      if (cleanStr[left] !== cleanStr[right]) {
+        return false; // Aba function block vako le dynamic exit instant huncha!
+      }
+      left++;
+      right--;
+    }
+    return true;
+  }
+
+  console.log(check()); // Output: true 🎯
   // const formattedLogs = logs.reduce((acc, curr) => {
   //   acc[curr?.item] = acc[curr?.item] || 0;
 
@@ -115,6 +208,14 @@ export default async function User() {
   //       : acc[curr?.item] - curr?.qty;
   //   return acc;
   // }, {});
+  const str1 = "hello";
+  let reverse = "";
+
+  for (let i = str1.length - 1; i > 0; i--) {
+    reverse += str1[i];
+  }
+
+  console.log("reverse", reverse);
 
   const formattedLogs = logs?.reduce((acc, curr) => {
     const item = curr?.item;
@@ -147,6 +248,7 @@ export default async function User() {
   const mappedUsers = rawUsers?.map((user) => {
     const capitalize = (str: string) =>
       str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
+    const name = "saheel";
     return {
       // fullName:
       //   user?.first_name.charAt(0).toUpperCase() +
@@ -161,6 +263,23 @@ export default async function User() {
   });
 
   const randomNumbers = [10, 20, 30];
+
+  function check1(...args) {
+    console.log("args", args);
+  }
+  check1("Saheel", 25, "Kathmandu");
+  const userTest = {
+    name: "Saheel",
+    role: "Frontend Developer",
+    salary: "28k",
+    password: "secret_password_123",
+  };
+
+  // 'password' lai bahira jhikera, baki sabai 'rest' variables ma pack gareko
+  const { password, ...restOfData } = userTest;
+
+  console.log("password", password);
+  console.log("rest of dta", restOfData);
 
   const greaterThanTwenty = randomNumbers?.map((number) => number > 20);
   console.log("greater than twenty", greaterThanTwenty);
