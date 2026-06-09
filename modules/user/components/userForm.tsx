@@ -15,6 +15,7 @@ import { TUser } from "../definitions/user.definitions";
 import { userAction } from "../actions/userAction";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import InputElement from "@/molecules/inputElement";
 
 export default function UserForm({ user }: { user: TUser }) {
   const [state, formAction, isPending] = useActionState(userAction, {});
@@ -62,32 +63,25 @@ export default function UserForm({ user }: { user: TUser }) {
         </CardHeader>
         <CardContent>
           <form className="space-y-6" action={formAction} noValidate>
-            <div className="space-y-2">
-              <Label htmlFor="fullName">Full Name</Label>
-              <Input
-                id="full_name"
-                name="full_name"
-                type="text"
-                placeholder="John Doe"
-                defaultValue={state?.data?.full_name ?? user?.full_name ?? ""}
-              />
-              {state?.errors?.full_name && (
-                <span className="text-red-700">{state?.errors?.full_name}</span>
-              )}
-            </div>
+            <InputElement
+              label="Full Name"
+              id="full_name"
+              name="full_name"
+              type="text"
+              placeholder="John Doe"
+              defaultValue={state?.data?.full_name ?? user?.full_name ?? ""}
+              error={state?.errors?.full_name}
+            />
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Email Address</Label>
-              <Input
-                name="email"
-                type="email"
-                placeholder="example@domain.com"
-                defaultValue={state?.data?.email ?? user?.email ?? ""}
-              />
-              {state?.errors?.email && (
-                <span className="text-red-700">{state?.errors?.email}</span>
-              )}
-            </div>
+            <InputElement
+              label="Email Address"
+              id="email"
+              name="email"
+              type="email"
+              placeholder="example@domain.com"
+              defaultValue={state?.data?.email ?? user?.email ?? ""}
+              error={state?.data?.email}
+            />
 
             <div className="space-y-2">
               <Label htmlFor="contactNumber">Contact Number</Label>
@@ -171,4 +165,20 @@ export default function UserForm({ user }: { user: TUser }) {
       </Card>
     </div>
   );
+}
+
+{
+  /* <div className="space-y-2">
+              <Label htmlFor="fullName">Full Name</Label>
+              <Input
+                id="full_name"
+                name="full_name"
+                type="text"
+                placeholder="John Doe"
+                defaultValue={state?.data?.full_name ?? user?.full_name ?? ""}
+              />
+              {state?.errors?.full_name && (
+                <span className="text-red-700">{state?.errors?.full_name}</span>
+              )}
+            </div> */
 }

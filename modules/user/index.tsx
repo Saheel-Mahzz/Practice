@@ -297,6 +297,7 @@ export default async function User() {
   //   (product) => product?.category === "Electronics" && product?.price < 500,
   // );
   // console.log("filtered prducts", filteredProducts);
-  // return <UserForm user={user?.data} />;
-  return <Practice />;
+
+  return <UserForm user={user?.data} />;
+  // return <Practice />;
 }

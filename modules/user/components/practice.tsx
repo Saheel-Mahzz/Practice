@@ -116,6 +116,12 @@ export default function Practice() {
 
   console.log("new arr", uniqueArray);
 
+  const employees = [
+    { name: "A", salary: 50000 },
+    { name: "B", salary: 80000 },
+    { name: "C", salary: 60000 },
+  ];
+
   return <div>Here for practice...s</div>;
 }
 

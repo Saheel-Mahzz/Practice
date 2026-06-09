@@ -19,6 +19,7 @@ export async function userAction (prevState,formData:FormData){
 
 
     if(!result?.success){
+        console.log('result err',result?.error)
    const fieldErrors = result?.error?.issues.reduce((acc,issue)=>{
 const fieldName = issue.path[0]
 acc[fieldName] = issue?.message
@@ -97,3 +98,4 @@ try {
     //     error:null
     // }
 }
+
