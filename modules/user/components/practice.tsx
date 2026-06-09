@@ -96,6 +96,26 @@ export default function Practice() {
     .join(".");
   console.log("transfomred dummy email", transformDummyEmail);
 
+  const array = ["a@gmail.com", "b@gmail.com", "a@gmail.com", "c@gmail.com"];
+  const newArr: string[] = [];
+
+  //   console.log("index", array.indexOf("c@gmail.com"));
+
+  const uniqueArray = array.filter(
+    (arr, index) => array.indexOf(arr) === index,
+  );
+
+  //   array.filter((arr) => {
+  //     if (newArr.includes(arr)) {
+  //       return;
+  //     }
+  //     newArr.push(arr);
+  //   });
+
+  //   const uniqueArray = [...new Set(array)];
+
+  console.log("new arr", uniqueArray);
+
   return <div>Here for practice...s</div>;
 }
 
