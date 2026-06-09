@@ -1,4 +1,5 @@
 import { getUser } from "./api/getUser";
+import Practice from "./components/practice";
 import UserForm from "./components/userForm";
 
 export const dummyUserProfile = {
@@ -12,289 +13,290 @@ export const dummyUserProfile = {
 };
 export default async function User() {
   const user = await getUser();
-  const numbers = [10, 20, 30];
-  const scores = [12, 45, 78, 23, 56];
+  // const numbers = [10, 20, 30];
+  // const scores = [12, 45, 78, 23, 56];
 
-  // const greaterNumber = scores?.reduce((acc, curr) => {
-  //   if (acc < curr) {
-  //     acc = curr;
-  //     return acc;
-  //   }
+  // // const greaterNumber = scores?.reduce((acc, curr) => {
+  // //   if (acc < curr) {
+  // //     acc = curr;
+  // //     return acc;
+  // //   }
+  // //   return acc;
+  // // }, 0);
+  // interface TUserItem {
+  //   id: number;
+  //   name: string;
+  //   role: string; // or strict 'developer' | 'admin'
+  // }
+  // const users = [
+  //   { id: 1, name: "Sahil", role: "developer" },
+  //   { id: 2, name: "Alex", role: "admin" },
+  //   { id: 3, name: "Rohan", role: "developer" },
+  //   { id: 4, name: "Sita", role: "admin" },
+  // ];
+
+  // // const transformmedArray = users?.reduce((acc, curr) => {
+  // //   if (acc[curr.role]) {
+  // //     acc[curr.role].push(curr);
+  // //     return acc;
+  // //   }
+  // //   acc[curr.role] = [];
+  // //   acc[curr.role].push(curr);
+
+  // //   return acc;
+  // // }, {});
+
+  // interface product {
+  //   item: string;
+  //   price: number;
+  //   item: number;
+  // }
+
+  // const cart = [
+  //   { item: "Gaming Mouse", price: 25, quantity: 2 }, // 25 * 2 = 50
+  //   { item: "Mechanical Keyboard", price: 80, quantity: 1 }, // 80 * 1 = 80
+  //   { item: "Mouse Pad", price: 15, quantity: 3 }, // 15 * 3 = 45
+  //   { item: "Type-C Cable", price: 10, quantity: 2 }, // 10 * 2 = 20
+  // ];
+
+  // const calculatedPrice = cart?.reduce((acc, curr) => {
+  //   acc += curr.quantity * curr.price;
   //   return acc;
   // }, 0);
-  interface TUserItem {
-    id: number;
-    name: string;
-    role: string; // or strict 'developer' | 'admin'
-  }
-  const users = [
-    { id: 1, name: "Sahil", role: "developer" },
-    { id: 2, name: "Alex", role: "admin" },
-    { id: 3, name: "Rohan", role: "developer" },
-    { id: 4, name: "Sita", role: "admin" },
-  ];
 
-  // const transformmedArray = users?.reduce((acc, curr) => {
-  //   if (acc[curr.role]) {
-  //     acc[curr.role].push(curr);
-  //     return acc;
-  //   }
-  //   acc[curr.role] = [];
-  //   acc[curr.role].push(curr);
+  // const orders = [
+  //   { customer: "Sahil", amount: 150 },
+  //   { customer: "Rohan", amount: 200 },
+  //   { customer: "Sahil", amount: 50 },
+  //   { customer: "Sita", amount: 300 },
+  //   { customer: "Rohan", amount: 120 },
+  // ];
 
+  // const filteredOrders = orders?.reduce((acc, curr) => {
+  //   //   acc[curr?.customer] = acc[curr?.customer] || {};
+  //   //   acc[curr?.customer] = {...acc[curr?.customer],curr}
+
+  //   acc[curr?.customer] = acc[curr?.customer] || {
+  //     totalSpend: 0,
+  //     orderCount: 0,
+  //   };
+
+  //   acc[curr?.customer].totalSpend += curr.amount;
+  //   acc[curr?.customer].orderCount += 1;
   //   return acc;
   // }, {});
 
-  interface product {
-    item: string;
-    price: number;
-    item: number;
-  }
+  // console.log("filetred orders", filteredOrders);
 
-  const cart = [
-    { item: "Gaming Mouse", price: 25, quantity: 2 }, // 25 * 2 = 50
-    { item: "Mechanical Keyboard", price: 80, quantity: 1 }, // 80 * 1 = 80
-    { item: "Mouse Pad", price: 15, quantity: 3 }, // 15 * 3 = 45
-    { item: "Type-C Cable", price: 10, quantity: 2 }, // 10 * 2 = 20
-  ];
+  // console.log("calculated price", calculatedPrice);
 
-  const calculatedPrice = cart?.reduce((acc, curr) => {
-    acc += curr.quantity * curr.price;
-    return acc;
-  }, 0);
+  // const transformedArray = users?.reduce(
+  //   (acc, curr) => {
+  //     acc[curr?.role] = acc[curr?.role] || [];
+  //     acc[curr?.role].push(curr);
+  //     return acc;
+  //   },
+  //   {} as Record<string, keyof TUserItem>,
+  // );
 
-  const orders = [
-    { customer: "Sahil", amount: 150 },
-    { customer: "Rohan", amount: 200 },
-    { customer: "Sahil", amount: 50 },
-    { customer: "Sita", amount: 300 },
-    { customer: "Rohan", amount: 120 },
-  ];
+  // const numberss = [1, 2, 3, 3, 4, 4, 5, 6, 7];
 
-  const filteredOrders = orders?.reduce((acc, curr) => {
-    //   acc[curr?.customer] = acc[curr?.customer] || {};
-    //   acc[curr?.customer] = {...acc[curr?.customer],curr}
+  // const uniqueNumbers = [...new Set(numberss)];
 
-    acc[curr?.customer] = acc[curr?.customer] || {
-      totalSpend: 0,
-      orderCount: 0,
-    };
+  // console.log("unique numbers", uniqueNumbers);
 
-    acc[curr?.customer].totalSpend += curr.amount;
-    acc[curr?.customer].orderCount += 1;
-    return acc;
-  }, {});
+  // const skills = ["React", "Next.js", "React", "TypeScript", "Next.js"];
+  // const uniqueSkills = [...new Set(skills)];
+  // console.log("unique skills", uniqueSkills);
 
-  console.log("filetred orders", filteredOrders);
+  // // const listA = [1, 2, 3, 4];
+  // // const listB = [3, 4, 5, 6];
 
-  console.log("calculated price", calculatedPrice);
+  // // const setB = new Set(listB);
 
-  const transformedArray = users?.reduce(
-    (acc, curr) => {
-      acc[curr?.role] = acc[curr?.role] || [];
-      acc[curr?.role].push(curr);
-      return acc;
-    },
-    {} as Record<string, keyof TUserItem>,
-  );
+  // // const uniqueSets = listA.filter((item) => setB.has(item));
+  // // console.log("unique sets", uniqueSets);
 
-  const numberss = [1, 2, 3, 3, 4, 4, 5, 6, 7];
-
-  const uniqueNumbers = [...new Set(numberss)];
-
-  console.log("unique numbers", uniqueNumbers);
-
-  const skills = ["React", "Next.js", "React", "TypeScript", "Next.js"];
-  const uniqueSkills = [...new Set(skills)];
-  console.log("unique skills", uniqueSkills);
-
-  // const listA = [1, 2, 3, 4];
-  // const listB = [3, 4, 5, 6];
+  // const listA = ["react", "nextjs", "typescript"];
+  // const listB = ["react", "vue", "angular"];
 
   // const setB = new Set(listB);
 
-  // const uniqueSets = listA.filter((item) => setB.has(item));
-  // console.log("unique sets", uniqueSets);
+  // const onlyA = listA.filter((item) => !setB.has(item));
 
-  const listA = ["react", "nextjs", "typescript"];
-  const listB = ["react", "vue", "angular"];
+  // console.log("only A", onlyA);
+  // const logs = [
+  //   { item: "Laptop", type: "IN", qty: 10 },
+  //   { item: "Mouse", type: "IN", qty: 50 },
+  //   { item: "Laptop", type: "OUT", qty: 3 },
+  //   { item: "Mouse", type: "OUT", qty: 15 },
+  //   { item: "Laptop", type: "IN", qty: 5 },
+  // ];
 
-  const setB = new Set(listB);
+  // const usersObject = [
+  //   { id: "usr_1", name: "Saheel" },
+  //   { id: "usr_2", name: "Dai" },
+  //   { id: "usr_1", name: "Sahil Maharjan" }, // Duplicate ID!
+  // ];
 
-  const onlyA = listA.filter((item) => !setB.has(item));
+  // const seenIds = new Set();
 
-  console.log("only A", onlyA);
-  const logs = [
-    { item: "Laptop", type: "IN", qty: 10 },
-    { item: "Mouse", type: "IN", qty: 50 },
-    { item: "Laptop", type: "OUT", qty: 3 },
-    { item: "Mouse", type: "OUT", qty: 15 },
-    { item: "Laptop", type: "IN", qty: 5 },
-  ];
+  // const uniqueUsersObject = usersObject.filter((user) => {
+  //   if (seenIds.has(user?.id)) {
+  //     return false;
+  //   }
+  //   seenIds.add(user?.id);
+  //   return true;
+  // });
 
-  const usersObject = [
-    { id: "usr_1", name: "Saheel" },
-    { id: "usr_2", name: "Dai" },
-    { id: "usr_1", name: "Sahil Maharjan" }, // Duplicate ID!
-  ];
+  // console.log("unique users object", uniqueUsersObject);
 
-  const seenIds = new Set();
+  // const notifications = [
+  //   { notifyId: 101, text: "New Comment" },
+  //   { notifyId: 102, text: "Like on post" },
+  //   { notifyId: 101, text: "New Comment Duplicate" },
+  // ];
 
-  const uniqueUsersObject = usersObject.filter((user) => {
-    if (seenIds.has(user?.id)) {
-      return false;
-    }
-    seenIds.add(user?.id);
-    return true;
-  });
+  // const seenNotify = new Set();
 
-  console.log("unique users object", uniqueUsersObject);
+  // const uniqueNotifications = notifications?.filter((notification) => {
+  //   if (seenNotify.has(notification?.notifyId)) {
+  //     return false;
+  //   }
+  //   seenNotify.add(notification?.notifyId);
+  //   return true;
+  // });
+  // console.log("unique notifications", uniqueNotifications);
 
-  const notifications = [
-    { notifyId: 101, text: "New Comment" },
-    { notifyId: 102, text: "Like on post" },
-    { notifyId: 101, text: "New Comment Duplicate" },
-  ];
+  // // const str = "A man, a plan, a canal: Panama";
 
-  const seenNotify = new Set();
+  // // let left = 0;
+  // // let right = str.length - 1;
+  // // console.log("right", str[2]);
 
-  const uniqueNotifications = notifications?.filter((notification) => {
-    if (seenNotify.has(notification?.notifyId)) {
-      return false;
-    }
-    seenNotify.add(notification?.notifyId);
-    return true;
-  });
-  console.log("unique notifications", uniqueNotifications);
+  // // while (left < right) {
+  // //   if (str[left] !== str[right]) return false;
+  // //   left++;
+  // //   right--;
+  // // }
 
-  // const str = "A man, a plan, a canal: Panama";
+  // const str = "A man, a plan, a canal: Panamttta";
 
-  // let left = 0;
-  // let right = str.length - 1;
-  // console.log("right", str[2]);
+  // function check() {
+  //   // Paila character space validation filter small lower standard bypass garne!
+  //   const cleanStr = str.toLowerCase().replace(/[^a-z0-9]/g, "");
 
-  // while (left < right) {
-  //   if (str[left] !== str[right]) return false;
-  //   left++;
-  //   right--;
+  //   let left = 0;
+  //   let right = cleanStr.length - 1;
+
+  //   while (left < right) {
+  //     if (cleanStr[left] !== cleanStr[right]) {
+  //       return false; // Aba function block vako le dynamic exit instant huncha!
+  //     }
+  //     left++;
+  //     right--;
+  //   }
+  //   return true;
   // }
 
-  const str = "A man, a plan, a canal: Panamttta";
+  // console.log(check()); // Output: true 🎯
+  // // const formattedLogs = logs.reduce((acc, curr) => {
+  // //   acc[curr?.item] = acc[curr?.item] || 0;
 
-  function check() {
-    // Paila character space validation filter small lower standard bypass garne!
-    const cleanStr = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  // //   acc[curr?.item] =
+  // //     curr?.type === "IN"
+  // //       ? acc[curr?.item] + curr?.qty
+  // //       : acc[curr?.item] - curr?.qty;
+  // //   return acc;
+  // // }, {});
+  // const str1 = "hello";
+  // let reverse = "";
 
-    let left = 0;
-    let right = cleanStr.length - 1;
+  // for (let i = str1.length - 1; i > 0; i--) {
+  //   reverse += str1[i];
+  // }
 
-    while (left < right) {
-      if (cleanStr[left] !== cleanStr[right]) {
-        return false; // Aba function block vako le dynamic exit instant huncha!
-      }
-      left++;
-      right--;
-    }
-    return true;
-  }
+  // console.log("reverse", reverse);
 
-  console.log(check()); // Output: true 🎯
-  // const formattedLogs = logs.reduce((acc, curr) => {
-  //   acc[curr?.item] = acc[curr?.item] || 0;
-
-  //   acc[curr?.item] =
-  //     curr?.type === "IN"
-  //       ? acc[curr?.item] + curr?.qty
-  //       : acc[curr?.item] - curr?.qty;
+  // const formattedLogs = logs?.reduce((acc, curr) => {
+  //   const item = curr?.item;
+  //   acc[item] = acc[item] || 0;
+  //   acc[item] += curr?.type === "IN" ? curr?.qty : -curr?.qty;
   //   return acc;
   // }, {});
-  const str1 = "hello";
-  let reverse = "";
+  // console.log("formatted logs", formattedLogs);
+  // console.log("transformed array", transformedArray);
 
-  for (let i = str1.length - 1; i > 0; i--) {
-    reverse += str1[i];
-  }
+  // const greaterNumber = scores?.reduce((acc, curr) => {
+  //   return acc > curr ? acc : curr;
+  // }, 0);
 
-  console.log("reverse", reverse);
+  // console.log("greater number", greaterNumber);
 
-  const formattedLogs = logs?.reduce((acc, curr) => {
-    const item = curr?.item;
-    acc[item] = acc[item] || 0;
-    acc[item] += curr?.type === "IN" ? curr?.qty : -curr?.qty;
-    return acc;
-  }, {});
-  console.log("formatted logs", formattedLogs);
-  console.log("transformed array", transformedArray);
+  // const calculatedNumber = numbers.reduce((acc, curr) => {
+  //   acc = acc + curr;
+  //   return acc;
+  // }, 0);
 
-  const greaterNumber = scores?.reduce((acc, curr) => {
-    return acc > curr ? acc : curr;
-  }, 0);
+  // console.log("calculated number", calculatedNumber);
 
-  console.log("greater number", greaterNumber);
+  // const rawUsers = [
+  //   { first_name: "sahil", last_name: "maharjan", is_active: 1 },
+  //   { first_name: "rohan", last_name: "shrestha", is_active: 0 },
+  //   { first_name: "sita", last_name: "thapa", is_active: 1 },
+  // ];
 
-  const calculatedNumber = numbers.reduce((acc, curr) => {
-    acc = acc + curr;
-    return acc;
-  }, 0);
+  // const mappedUsers = rawUsers?.map((user) => {
+  //   const capitalize = (str: string) =>
+  //     str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
+  //   const name = "saheel";
+  //   return {
+  //     // fullName:
+  //     //   user?.first_name.charAt(0).toUpperCase() +
+  //     //   user?.first_name?.slice(1) +
+  //     //   " " +
+  //     //   user?.last_name?.charAt(0).toUpperCase() +
+  //     //   user?.last_name?.slice(1),
+  //     fullName: `${capitalize(user?.first_name)} ${capitalize(user?.last_name)}`,
 
-  console.log("calculated number", calculatedNumber);
+  //     status: user?.is_active ? "Active" : "Inactive",
+  //   };
+  // });
 
-  const rawUsers = [
-    { first_name: "sahil", last_name: "maharjan", is_active: 1 },
-    { first_name: "rohan", last_name: "shrestha", is_active: 0 },
-    { first_name: "sita", last_name: "thapa", is_active: 1 },
-  ];
+  // const randomNumbers = [10, 20, 30];
 
-  const mappedUsers = rawUsers?.map((user) => {
-    const capitalize = (str: string) =>
-      str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
-    const name = "saheel";
-    return {
-      // fullName:
-      //   user?.first_name.charAt(0).toUpperCase() +
-      //   user?.first_name?.slice(1) +
-      //   " " +
-      //   user?.last_name?.charAt(0).toUpperCase() +
-      //   user?.last_name?.slice(1),
-      fullName: `${capitalize(user?.first_name)} ${capitalize(user?.last_name)}`,
+  // function check1(...args) {
+  //   console.log("args", args);
+  // }
+  // check1("Saheel", 25, "Kathmandu");
+  // const userTest = {
+  //   name: "Saheel",
+  //   role: "Frontend Developer",
+  //   salary: "28k",
+  //   password: "secret_password_123",
+  // };
 
-      status: user?.is_active ? "Active" : "Inactive",
-    };
-  });
+  // // 'password' lai bahira jhikera, baki sabai 'rest' variables ma pack gareko
+  // const { password, ...restOfData } = userTest;
 
-  const randomNumbers = [10, 20, 30];
+  // console.log("password", password);
+  // console.log("rest of dta", restOfData);
 
-  function check1(...args) {
-    console.log("args", args);
-  }
-  check1("Saheel", 25, "Kathmandu");
-  const userTest = {
-    name: "Saheel",
-    role: "Frontend Developer",
-    salary: "28k",
-    password: "secret_password_123",
-  };
+  // const greaterThanTwenty = randomNumbers?.map((number) => number > 20);
+  // console.log("greater than twenty", greaterThanTwenty);
 
-  // 'password' lai bahira jhikera, baki sabai 'rest' variables ma pack gareko
-  const { password, ...restOfData } = userTest;
+  // const products = [
+  //   { id: 1, name: "Smartphone", category: "Electronics", price: 800 },
+  //   { id: 2, name: "Trimmer", category: "Electronics", price: 40 },
+  //   { id: 3, name: "Keyboard", category: "Electronics", price: 120 },
+  //   { id: 4, name: "Running Shoes", category: "Clothing", price: 90 },
+  //   { id: 5, name: "Smart Watch", category: "Electronics", price: 250 },
+  // ];
 
-  console.log("password", password);
-  console.log("rest of dta", restOfData);
-
-  const greaterThanTwenty = randomNumbers?.map((number) => number > 20);
-  console.log("greater than twenty", greaterThanTwenty);
-
-  const products = [
-    { id: 1, name: "Smartphone", category: "Electronics", price: 800 },
-    { id: 2, name: "Trimmer", category: "Electronics", price: 40 },
-    { id: 3, name: "Keyboard", category: "Electronics", price: 120 },
-    { id: 4, name: "Running Shoes", category: "Clothing", price: 90 },
-    { id: 5, name: "Smart Watch", category: "Electronics", price: 250 },
-  ];
-
-  const filteredProducts = products?.filter(
-    (product) => product?.category === "Electronics" && product?.price < 500,
-  );
-  console.log("filtered prducts", filteredProducts);
-  return <UserForm user={user?.data} />;
+  // const filteredProducts = products?.filter(
+  //   (product) => product?.category === "Electronics" && product?.price < 500,
+  // );
+  // console.log("filtered prducts", filteredProducts);
+  // return <UserForm user={user?.data} />;
+  return <Practice />;
 }
