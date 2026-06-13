@@ -13,6 +13,40 @@ export const dummyUserProfile = {
 };
 export default async function User() {
   const user = await getUser();
+
+  const userProfileAPIResponse = {
+  id: "USR-99",
+  name: "Saheel",
+  info: {
+    role: "Frontend Developer",
+    experience: "1.5 Years",
+    location: {
+      city: "Kathmandu",
+      country: "Nepal"
+    }
+  },
+  preferences: {
+    theme: "dark",
+    notifications: {
+      email: true,
+      push: false
+    }
+  }
+};
+
+let result ={}
+
+function flatten (obj){
+   for(let key in obj){
+    if(typeof obj[key] ==='object' && obj[key] !== null){
+   flatten(obj[key])
+    }
+    result= {...old,obj[key]}
+   }
+}
+
+result = countDown(1-1) =0 //this runs 
+result =countDown(2-1) =1 //this runs right 
   // const numbers = [10, 20, 30];
   // const scores = [12, 45, 78, 23, 56];
 
