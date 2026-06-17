@@ -8,6 +8,7 @@ interface PasswordProps {
   name: string;
   id: string;
   err?: string;
+  defaultValue?: string;
 }
 
 export default function PasswordInput({
@@ -16,11 +17,18 @@ export default function PasswordInput({
   name,
   placeholder,
   err,
+  defaultValue,
 }: PasswordProps) {
   return (
     <div className="space-y-2">
       <Label htmlFor="current-password">{label}</Label>
-      <Input id={id} name={name} type="password" placeholder={placeholder} />
+      <Input
+        id={id}
+        name={name}
+        type="password"
+        placeholder={placeholder}
+        defaultValue={defaultValue}
+      />
       {err && <span className="text-red-500 text-sm">{err}</span>}
     </div>
   );
